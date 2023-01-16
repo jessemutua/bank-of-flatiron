@@ -16,18 +16,20 @@ function Table() {
         <
         tr >
         <
-        th > Column 1 < /th> <
-        th > Column 2 < /th> <
-        th > Column 3 < /th> <
+        th > Id < /th> <
+        th > Date < /th> <
+        th > Description < /th> <
+        th > Category < /th> <
+        th > Amount < /th> <
         /tr> <
         /thead> <
         tbody > {
             data.map(item => ( <
                 tr key = { item.id } >
                 <
-                td > { item.column1 } < /td> <
-                td > { item.column2 } < /td> <
-                td > { item.column3 } < /td> <
+                td > { item.Date } < /td> <
+                td > { item.Description } < /td> <
+                td > { item.Amount } < /td> <
                 /tr>
             ))
         } <
