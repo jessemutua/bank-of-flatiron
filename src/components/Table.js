@@ -10,13 +10,12 @@ function Table() {
     }, []);
 
     return ( <
-        table >
+        table className = 'grid-table' >
         <
         thead >
         <
         tr >
         <
-        th > Id < /th> <
         th > Date < /th> <
         th > Description < /th> <
         th > Category < /th> <
@@ -27,9 +26,10 @@ function Table() {
             data.map(item => ( <
                 tr key = { item.id } >
                 <
-                td > { item.Date } < /td> <
-                td > { item.Description } < /td> <
-                td > { item.Amount } < /td> <
+                td > { item.date } < /td> <
+                td > { item.description } < /td> <
+                td > { item.category } < /td> <
+                td > { item.amount } < /td> <
                 /tr>
             ))
         } <

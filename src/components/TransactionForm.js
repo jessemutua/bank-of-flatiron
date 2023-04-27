@@ -1,22 +1,18 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 
 
 
 
 
-function transactionForm(){
-    const [data, setData] =useState([])
+function TransactionForm() {
+    const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
-    // const [filters, setFilters] = useState({
-    //     global: { value: null, matchMode: FilterMatchMode.CONTAINS}
-    // })
 
-    
-    
 
-    const columns = [
-        {
+
+
+    const columns = [{
             name: "Date",
             selector: (row) => row.date
         },
@@ -36,28 +32,35 @@ function transactionForm(){
     ]
     useEffect(() => {
         TransactionList()
-    },[])
+    }, [])
 
 
-     async function TransactionList(){
+    async function TransactionList() {
         setLoading(true)
-        const url = " http://localhost:3000/transactions"
-        const response = await fetch(url)
+        try {
+            const url = " http://localhost:3000/transactions"
+            const response = await fetch(url)
 
-        const users =await response.json()
-        setData(users)
-        setLoading(false)
+            const { users } = await response.json()
+            setData(users)
+            setLoading(false)
+        } catch (error) {
+            console.error(error);
+            setLoading(false)
         }
-    return(
-            <div>
-                <DataTable 
-                  title = "Transactions"
-                  columns = {columns}
-                  data = {data}
-                  progressPending ={loading}
-                />
-            </div>
+    }
+    return ( <
+        div >
+        <
+        DataTable title = "Transactions"
+        columns = { columns }
+        data = { data }
+        progressPending = { loading }
+        keyField = "id" /
+        >
+        <
+        /div>
     )
 }
 
-export default transactionForm;
+export default TransactionForm;
